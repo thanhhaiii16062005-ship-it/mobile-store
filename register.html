@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Đăng ký - Mobile Store</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<link rel="stylesheet" href="chatbot.css">
+<script src="chatbot.js"></script>
+<body>
+
+    <header class="header">
+        <div class="container header-container">
+
+            <a href="index.html" class="logo">
+                📱 MOBILE STORE
+            </a>
+
+            <nav class="nav">
+                <a href="index.html">Trang chủ</a>
+                <a href="products.html">Sản phẩm</a>
+                <a href="login.html">Đăng nhập</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <main class="auth-page">
+
+        <div class="auth-container">
+
+            <div class="auth-card">
+
+                <h1>Tạo tài khoản</h1>
+
+                <p class="auth-subtitle">
+                    Đăng ký tài khoản Mobile Store
+                </p>
+
+                <form id="registerForm">
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Họ và tên
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Nhập họ và tên"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Nhập email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Mật khẩu
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Nhập mật khẩu"
+                            minlength="6"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Nhập lại mật khẩu
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Nhập lại mật khẩu"
+                            minlength="6"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="auth-submit"
+                    >
+                        Đăng ký
+                    </button>
+
+                    <p id="registerMessage" class="auth-message"></p>
+
+                </form>
+
+
+                <div class="auth-footer">
+
+                    Đã có tài khoản?
+
+                    <a href="login.html">
+                        Đăng nhập
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Mobile Store. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Firebase + Authentication -->
+    <script type="module" src="js/register.js"></script>
+
+</body>
+</html>

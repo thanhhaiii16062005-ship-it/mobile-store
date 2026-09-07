@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chi tiết sản phẩm - HHHMOBILE STORE</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<link rel="stylesheet" href="chatbot.css">
+<script src="chatbot.js"></script>
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="container header-container">
+
+            <a href="index.html" class="logo">
+                📱 HHHMOBILE STORE
+            </a>
+
+
+            <nav class="nav">
+
+                <a href="index.html">
+                    Trang chủ
+                </a>
+
+                <a href="products.html" class="active">
+                    Sản phẩm
+                </a>
+
+                <a href="orders.html">
+                    Đơn hàng
+                </a>
+
+            </nav>
+
+
+            <div class="header-actions">
+
+                <!-- GIỎ HÀNG -->
+
+                <a href="cart.html" class="cart-link">
+
+                    🛒 Giỏ hàng
+
+                    <span id="cartCount">
+                        0
+                    </span>
+
+                </a>
+
+
+                <!-- TÀI KHOẢN -->
+
+                <div id="userArea" class="user-area">
+
+                    <a href="login.html" class="login-btn">
+                        Đăng nhập
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= PRODUCT DETAIL ================= -->
+
+    <main>
+
+        <section class="product-detail-page">
+
+            <div class="container">
+
+
+                <!-- BACK -->
+
+                <a href="products.html" class="back-link">
+
+                    ← Quay lại sản phẩm
+
+                </a>
+
+
+                <!-- DETAIL -->
+
+                <div
+                    class="product-detail"
+                    id="productDetail"
+                >
+
+                    <!-- JavaScript sẽ hiển thị sản phẩm ở đây -->
+
+                </div>
+
+
+                <!-- NOT FOUND -->
+
+                <div
+                    class="product-not-found"
+                    id="productNotFound"
+                    style="display: none;"
+                >
+
+                    <div class="empty-icon">
+                        📱
+                    </div>
+
+                    <h2>
+                        Không tìm thấy sản phẩm
+                    </h2>
+
+                    <p>
+                        Sản phẩm bạn đang tìm kiếm không tồn tại.
+                    </p>
+
+                    <a
+                        href="products.html"
+                        class="btn btn-primary"
+                    >
+                        Xem sản phẩm
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="container footer-container">
+
+
+            <!-- STORE -->
+
+            <div class="footer-column">
+
+                <h3>
+                    📱 HHHMOBILE STORE
+                </h3>
+
+                <p>
+                    Hệ thống quản lý website bán điện thoại HHHMOBILE STORE.
+                </p>
+
+            </div>
+
+
+            <!-- LINKS -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Liên kết
+                </h3>
+
+                <a href="index.html">
+                    Trang chủ
+                </a>
+
+                <a href="products.html">
+                    Sản phẩm
+                </a>
+
+                <a href="cart.html">
+                    Giỏ hàng
+                </a>
+
+                <a href="login.html">
+                    Đăng nhập
+                </a>
+
+            </div>
+
+
+            <!-- SUPPORT -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Hỗ trợ
+                </h3>
+
+                <p>
+                    📞 0123 456 789
+                </p>
+
+                <p>
+                    ✉️ support@mobilestore.vn
+                </p>
+
+                <p>
+                    📍 Hải Phòng, Việt Nam
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 HHHMOBILE STORE. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <!-- Danh sách sản phẩm -->
+    <script type="module" src="js/products.js"></script>
+
+    <!-- Giỏ hàng -->
+    <script src="js/cart.js"></script>
+
+    <!-- Chi tiết sản phẩm -->
+    <script type="module" src="js/product-detail.js"></script>
+
+
+    <!-- Firebase -->
+    <script
+        type="module"
+        src="js/firebase.js">
+    </script>
+
+    <!-- Đăng nhập / đăng xuất -->
+    <script
+        type="module"
+        src="js/auth.js">
+    </script>
+
+</body>
+
+</html>

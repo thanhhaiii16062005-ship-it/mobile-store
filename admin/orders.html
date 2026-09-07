@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quản lý đơn hàng - Mobile Store</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-container">
+
+            <a href="index.html" class="logo">
+                📱 MOBILE STORE
+            </a>
+
+            <nav class="nav">
+                <a href="index.html">Dashboard</a>
+                <a href="products.html">Sản phẩm</a>
+                <a href="categories.html">Danh mục</a>
+                <a href="orders.html" class="active">Đơn hàng</a>
+                <a href="users.html">Người dùng</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="admin-page">
+
+        <div class="container">
+
+            <!-- TITLE -->
+            <div class="page-heading">
+
+                <p>ORDER MANAGEMENT</p>
+
+                <h1>Quản lý đơn hàng</h1>
+
+                <span>
+                    Theo dõi và cập nhật trạng thái đơn hàng của khách hàng
+                </span>
+
+            </div>
+
+
+            <!-- FILTER -->
+            <section class="admin-form-card">
+
+                <div class="admin-section-title">
+
+                    <div>
+                        <p>ORDER FILTER</p>
+                        <h2>Tìm kiếm đơn hàng</h2>
+                    </div>
+
+                </div>
+
+                <div class="admin-filter-row">
+
+                    <div class="form-group">
+
+                        <label for="orderSearch">
+                            Tìm kiếm
+                        </label>
+
+                        <input
+                            type="text"
+                            id="orderSearch"
+                            placeholder="Mã đơn, tên khách hàng, số điện thoại..."
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="statusFilter">
+                            Trạng thái
+                        </label>
+
+                        <select id="statusFilter">
+
+                            <option value="all">
+                                Tất cả trạng thái
+                            </option>
+
+                            <option value="Chờ xác nhận">
+                                Chờ xác nhận
+                            </option>
+
+                            <option value="Đã xác nhận">
+                                Đã xác nhận
+                            </option>
+
+                            <option value="Đang giao">
+                                Đang giao
+                            </option>
+
+                            <option value="Đã giao">
+                                Đã giao
+                            </option>
+
+                            <option value="Đã hủy">
+                                Đã hủy
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ORDER LIST -->
+            <section class="admin-table-card">
+
+                <div class="admin-section-title">
+
+                    <div>
+                        <p>ORDER LIST</p>
+
+                        <h2>Danh sách đơn hàng</h2>
+                    </div>
+
+                </div>
+
+
+                <div id="orderList">
+
+                    <div class="loading-products">
+                        Đang tải đơn hàng...
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Mobile Store. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script type="module" src="orders.js"></script>
+
+</body>
+</html>

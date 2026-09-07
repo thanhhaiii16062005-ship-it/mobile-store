@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard -  HHHMOBILE STORE</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="admin-body">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+
+        <div class="admin-logo">
+            📱
+            <span>HHHMOBILE STORE</span>
+        </div>
+
+        <div class="admin-menu-title">
+            QUẢN LÝ
+        </div>
+
+        <nav class="admin-nav">
+
+            <a href="index.html" class="admin-nav-item active">
+                📊
+                <span>Tổng quan</span>
+            </a>
+
+            <a href="products.html" class="admin-nav-item">
+                📱
+                <span>Sản phẩm</span>
+            </a>
+
+            <a href="categories.html" class="admin-nav-item">
+                🗂️
+                <span>Danh mục</span>
+            </a>
+
+            <a href="orders.html" class="admin-nav-item">
+                🧾
+                <span>Đơn hàng</span>
+            </a>
+
+            <a href="users.html" class="admin-nav-item">
+                👥
+                <span>Khách hàng</span>
+            </a>
+
+        </nav>
+
+        <div class="admin-sidebar-bottom">
+
+            <a href="../index.html" class="admin-nav-item">
+                🏠
+                <span>Về website</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="admin-main">
+
+        <!-- TOPBAR -->
+        <header class="admin-topbar">
+
+            <div>
+                <h1>Dashboard</h1>
+
+                <p>
+                    Chào mừng bạn đến với hệ thống quản trị HHHMOBILE STORE
+                </p>
+            </div>
+
+            <div class="admin-account">
+                👤
+                <span id="adminName">
+                    Quản trị viên
+                </span>
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="admin-content">
+
+            <!-- PAGE TITLE -->
+            <div class="admin-page-heading">
+
+                <div>
+                    <h2>Tổng quan hệ thống</h2>
+
+                    <p>
+                        Theo dõi hoạt động kinh doanh của cửa hàng
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- STATISTICS -->
+            <div class="admin-stat-grid">
+
+                <!-- PRODUCTS -->
+                <div class="admin-stat-card">
+
+                    <div class="admin-stat-icon">
+                        📱
+                    </div>
+
+                    <div class="admin-stat-info">
+
+                        <span>
+                            Tổng sản phẩm
+                        </span>
+
+                        <strong id="totalProducts">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ORDERS -->
+                <div class="admin-stat-card">
+
+                    <div class="admin-stat-icon">
+                        🧾
+                    </div>
+
+                    <div class="admin-stat-info">
+
+                        <span>
+                            Tổng đơn hàng
+                        </span>
+
+                        <strong id="totalOrders">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CUSTOMERS -->
+                <div class="admin-stat-card">
+
+                    <div class="admin-stat-icon">
+                        👥
+                    </div>
+
+                    <div class="admin-stat-info">
+
+                        <span>
+                            Khách hàng
+                        </span>
+
+                        <strong id="totalCustomers">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- REVENUE -->
+                <div class="admin-stat-card">
+
+                    <div class="admin-stat-icon">
+                        💰
+                    </div>
+
+                    <div class="admin-stat-info">
+
+                        <span>
+                            Doanh thu
+                        </span>
+
+                        <strong id="totalRevenue">
+                            0 ₫
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TWO COLUMNS -->
+            <div class="admin-dashboard-grid">
+
+
+                <!-- RECENT ORDERS -->
+                <div class="admin-panel">
+
+                    <div class="admin-panel-header">
+
+                        <div>
+                            <h3>
+                                🧾 Đơn hàng gần đây
+                            </h3>
+
+                            <p>
+                                Những đơn hàng mới nhất
+                            </p>
+                        </div>
+
+                        <a href="orders.html">
+                            Xem tất cả →
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        id="recentOrders"
+                        class="admin-recent-orders"
+                    >
+
+                        <div class="admin-loading">
+                            Đang tải dữ liệu...
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK ACTIONS -->
+                <div class="admin-panel">
+
+                    <div class="admin-panel-header">
+
+                        <div>
+                            <h3>
+                                ⚡ Thao tác nhanh
+                            </h3>
+
+                            <p>
+                                Quản lý cửa hàng
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="admin-quick-actions">
+
+                        <a
+                            href="products.html"
+                            class="admin-quick-action"
+                        >
+
+                            <span>➕</span>
+
+                            <div>
+                                <strong>
+                                    Thêm sản phẩm
+                                </strong>
+
+                                <small>
+                                    Thêm điện thoại mới
+                                </small>
+                            </div>
+
+                        </a>
+
+
+                        <a
+                            href="categories.html"
+                            class="admin-quick-action"
+                        >
+
+                            <span>🗂️</span>
+
+                            <div>
+                                <strong>
+                                    Quản lý danh mục
+                                </strong>
+
+                                <small>
+                                    Thêm hoặc chỉnh sửa danh mục
+                                </small>
+                            </div>
+
+                        </a>
+
+
+                        <a
+                            href="orders.html"
+                            class="admin-quick-action"
+                        >
+
+                            <span>📦</span>
+
+                            <div>
+                                <strong>
+                                    Xử lý đơn hàng
+                                </strong>
+
+                                <small>
+                                    Kiểm tra đơn hàng mới
+                                </small>
+                            </div>
+
+                        </a>
+
+
+                        <a
+                            href="users.html"
+                            class="admin-quick-action"
+                        >
+
+                            <span>👥</span>
+
+                            <div>
+                                <strong>
+                                    Khách hàng
+                                </strong>
+
+                                <small>
+                                    Xem danh sách khách hàng
+                                </small>
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ORDER STATUS -->
+            <div class="admin-panel">
+
+                <div class="admin-panel-header">
+
+                    <div>
+                        <h3>
+                            📈 Trạng thái đơn hàng
+                        </h3>
+
+                        <p>
+                            Tổng quan tình trạng xử lý đơn
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="admin-order-status-grid">
+
+                    <div class="admin-status-card waiting">
+
+                        <span>
+                            ⏳
+                        </span>
+
+                        <div>
+                            <strong id="pendingOrders">
+                                0
+                            </strong>
+
+                            <small>
+                                Chờ xác nhận
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="admin-status-card processing">
+
+                        <span>
+                            🚚
+                        </span>
+
+                        <div>
+                            <strong id="shippingOrders">
+                                0
+                            </strong>
+
+                            <small>
+                                Đang giao
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="admin-status-card completed">
+
+                        <span>
+                            ✅
+                        </span>
+
+                        <div>
+                            <strong id="completedOrders">
+                                0
+                            </strong>
+
+                            <small>
+                                Hoàn thành
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="admin-status-card cancelled">
+
+                        <span>
+                            ❌
+                        </span>
+
+                        <div>
+                            <strong id="cancelledOrders">
+                                0
+                            </strong>
+
+                            <small>
+                                Đã hủy
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FIREBASE -->
+    <script type="module" src="../js/firebase.js"></script>
+
+    <script type="module" src="admin.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Đặt hàng - HHHMOBILE STORE</title>
+
+<link rel="stylesheet" href="css/style.css">
+```
+
+</head>
+<link rel="stylesheet" href="chatbot.css">
+<script src="chatbot.js"></script>
+<body>
+
+<header class="header">
+    <div class="container header-container">
+
+```
+    <a href="index.html" class="logo">
+        📱 HHHMOBILE STORE
+    </a>
+
+    <nav class="nav">
+        <a href="index.html">Trang chủ</a>
+        <a href="products.html">Sản phẩm</a>
+        <a href="orders.html" class="active">Đặt hàng</a>
+        <a href="cart.html">Giỏ hàng</a>
+        <span id="authArea"></span>
+    </nav>
+
+</div>
+```
+
+</header>
+
+<main class="orders-page">
+
+```
+<div class="container">
+
+    <div class="page-heading">
+        <p>CHECKOUT</p>
+        <h1>Thông tin đặt hàng</h1>
+    </div>
+
+
+    <div class="order-layout">
+
+        <!-- FORM ĐẶT HÀNG -->
+        <section class="order-form-card">
+
+            <h2>Thông tin nhận hàng</h2>
+
+            <form id="orderForm">
+
+                <div class="form-group">
+                    <label for="customerName">
+                        Họ và tên
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        placeholder="Nhập họ và tên"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="customerPhone">
+                        Số điện thoại
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="customerPhone"
+                        placeholder="Nhập số điện thoại"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="customerAddress">
+                        Địa chỉ nhận hàng
+                    </label>
+
+                    <textarea
+                        id="customerAddress"
+                        rows="4"
+                        placeholder="Nhập địa chỉ nhận hàng"
+                        required
+                    ></textarea>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="orderNote">
+                        Ghi chú
+                    </label>
+
+                    <textarea
+                        id="orderNote"
+                        rows="3"
+                        placeholder="Ghi chú cho đơn hàng (không bắt buộc)"
+                    ></textarea>
+                </div>
+
+
+                <!-- THANH TOÁN -->
+                <div class="form-group payment-section">
+
+                    <label class="payment-title">
+                        💳 Phương thức thanh toán
+                    </label>
+
+
+                    <div class="payment-options">
+
+                        <label class="payment-card">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="COD"
+                                checked
+                            >
+
+                            <div class="payment-icon">
+                                💵
+                            </div>
+
+                            <div class="payment-content">
+                                <strong>
+                                    Thanh toán khi nhận hàng
+                                </strong>
+
+                                <span>
+                                    Thanh toán trực tiếp khi nhận được sản phẩm
+                                </span>
+                            </div>
+
+                            <div class="payment-check">
+                                ✓
+                            </div>
+
+                        </label>
+
+
+                        <label class="payment-card">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="BANK"
+                            >
+
+                            <div class="payment-icon">
+                                🏦
+                            </div>
+
+                            <div class="payment-content">
+                                <strong>
+                                    Chuyển khoản ngân hàng
+                                </strong>
+
+                                <span>
+                                    Chuyển khoản trước qua tài khoản ngân hàng
+                                </span>
+                            </div>
+
+                            <div class="payment-check">
+                                ✓
+                            </div>
+
+                        </label>
+
+
+                        <label class="payment-card">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="MOMO"
+                            >
+
+                            <div class="payment-icon">
+                                📱
+                            </div>
+
+                            <div class="payment-content">
+                                <strong>
+                                    Ví điện tử
+                                </strong>
+
+                                <span>
+                                    Thanh toán nhanh chóng qua ví điện tử
+                                </span>
+                            </div>
+
+                            <div class="payment-check">
+                                ✓
+                            </div>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary order-submit-btn"
+                >
+                    Đặt hàng
+                </button>
+
+                <div id="orderMessage"></div>
+
+            </form>
+
+        </section>
+
+
+        <!-- TÓM TẮT ĐƠN HÀNG -->
+        <aside class="order-summary-card">
+
+            <h2>Đơn hàng của bạn</h2>
+
+            <div id="orderSummary">
+                <p>Đang tải đơn hàng...</p>
+            </div>
+
+        </aside>
+
+    </div>
+
+
+    <!-- ĐẶT HÀNG THÀNH CÔNG -->
+    <section
+        id="orderSuccess"
+        class="order-success"
+        style="display:none;"
+    >
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>Đặt hàng thành công!</h2>
+
+        <p>
+            Cảm ơn bạn đã mua hàng tại HHHMOBILE STORE.
+        </p>
+
+        <a
+            href="index.html"
+            class="btn btn-primary"
+        >
+            Về trang chủ
+        </a>
+
+    </section>
+
+</div>
+```
+
+</main>
+
+<footer class="footer">
+
+```
+<div class="footer-bottom">
+    <p>
+        © 2026 HHHMOBILE STORE. All rights reserved.
+    </p>
+</div>
+```
+
+</footer>
+
+<script src="js/cart.js"></script>
+
+<script type="module" src="js/orders.js"></script>
+
+<script type="module" src="js/firebase.js"></script>
+
+<script type="module" src="js/auth.js"></script>
+
+</body>
+</html>

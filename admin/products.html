@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quản lý sản phẩm - Mobile Store Admin</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="admin-body">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+
+        <div class="admin-logo">
+            📱
+            <span>Mobile Store</span>
+        </div>
+
+        <div class="admin-menu-title">
+            QUẢN LÝ
+        </div>
+
+        <nav class="admin-nav">
+
+            <a href="index.html" class="admin-nav-item">
+                📊
+                <span>Tổng quan</span>
+            </a>
+
+            <a href="products.html" class="admin-nav-item active">
+                📱
+                <span>Sản phẩm</span>
+            </a>
+
+            <a href="categories.html" class="admin-nav-item">
+                🗂️
+                <span>Danh mục</span>
+            </a>
+
+            <a href="orders.html" class="admin-nav-item">
+                🧾
+                <span>Đơn hàng</span>
+            </a>
+
+            <a href="users.html" class="admin-nav-item">
+                👥
+                <span>Khách hàng</span>
+            </a>
+
+        </nav>
+
+        <div class="admin-sidebar-bottom">
+
+            <a href="../index.html" class="admin-nav-item">
+                🏠
+                <span>Về website</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="admin-main">
+
+        <!-- TOPBAR -->
+        <header class="admin-topbar">
+
+            <div>
+                <h1>Quản lý sản phẩm</h1>
+
+                <p>
+                    Thêm, chỉnh sửa và quản lý sản phẩm điện thoại
+                </p>
+            </div>
+
+            <div class="admin-account">
+                👤
+                <span>Quản trị viên</span>
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="admin-content">
+
+            <!-- PAGE HEADING -->
+            <div class="admin-page-heading admin-products-heading">
+
+                <div>
+                    <h2>Danh sách sản phẩm</h2>
+
+                    <p>
+                        Quản lý toàn bộ sản phẩm đang có trên cửa hàng
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    id="addProductBtn"
+                    class="admin-primary-btn"
+                >
+                    ➕ Thêm sản phẩm
+                </button>
+
+            </div>
+
+
+            <!-- FILTER BAR -->
+            <div class="admin-filter-panel">
+
+                <div class="admin-search-box">
+
+                    <span>🔎</span>
+
+                    <input
+                        type="text"
+                        id="productSearch"
+                        placeholder="Tìm kiếm sản phẩm..."
+                    >
+
+                </div>
+
+
+                <select id="productBrandFilter">
+
+                    <option value="">
+                        Tất cả thương hiệu
+                    </option>
+
+                    <option value="Apple">
+                        Apple
+                    </option>
+
+                    <option value="Samsung">
+                        Samsung
+                    </option>
+
+                    <option value="Xiaomi">
+                        Xiaomi
+                    </option>
+
+                    <option value="OPPO">
+                        OPPO
+                    </option>
+
+                </select>
+
+
+                <select id="productSort">
+
+                    <option value="newest">
+                        Mới nhất
+                    </option>
+
+                    <option value="priceLow">
+                        Giá thấp → cao
+                    </option>
+
+                    <option value="priceHigh">
+                        Giá cao → thấp
+                    </option>
+
+                    <option value="nameAZ">
+                        Tên A → Z
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- PRODUCT COUNT -->
+            <div class="admin-list-info">
+
+                <span>
+                    Hiển thị
+                    <strong id="productCount">0</strong>
+                    sản phẩm
+                </span>
+
+            </div>
+
+
+            <!-- PRODUCT TABLE -->
+            <div class="admin-table-panel">
+
+                <div class="admin-table-wrapper">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Sản phẩm
+                                </th>
+
+                                <th>
+                                    Thương hiệu
+                                </th>
+
+                                <th>
+                                    Giá
+                                </th>
+
+                                <th>
+                                    Tồn kho
+                                </th>
+
+                                <th>
+                                    Trạng thái
+                                </th>
+
+                                <th>
+                                    Thao tác
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="productTableBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="6"
+                                    class="admin-table-loading"
+                                >
+                                    Đang tải sản phẩm...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- PRODUCT MODAL -->
+    <div
+        id="productModal"
+        class="admin-modal"
+    >
+
+        <div class="admin-modal-overlay"></div>
+
+
+        <div class="admin-modal-box">
+
+            <div class="admin-modal-header">
+
+                <div>
+
+                    <h2 id="modalTitle">
+                        Thêm sản phẩm
+                    </h2>
+
+                    <p>
+                        Nhập thông tin sản phẩm
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="closeModalBtn"
+                    class="admin-modal-close"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form
+                id="productForm"
+                class="admin-product-form"
+            >
+
+                <!-- PRODUCT NAME -->
+                <div class="admin-form-group">
+
+                    <label for="productName">
+                        Tên sản phẩm
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productName"
+                        placeholder="Ví dụ: iPhone 16 Pro Max"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- BRAND + CATEGORY -->
+                <div class="admin-form-row">
+
+                    <div class="admin-form-group">
+
+                        <label for="productBrand">
+                            Thương hiệu
+                            <span>*</span>
+                        </label>
+
+                        <select
+                            id="productBrand"
+                            required
+                        >
+
+                            <option value="">
+                                Chọn thương hiệu
+                            </option>
+
+                            <option value="Apple">
+                                Apple
+                            </option>
+
+                            <option value="Samsung">
+                                Samsung
+                            </option>
+
+                            <option value="Xiaomi">
+                                Xiaomi
+                            </option>
+
+                            <option value="OPPO">
+                                OPPO
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="admin-form-group">
+
+                        <label for="productCategory">
+                            Danh mục
+                            <span>*</span>
+                        </label>
+
+                        <select
+                            id="productCategory"
+                            required
+                        >
+
+                            <option value="">
+                                Chọn danh mục
+                            </option>
+
+                            <option value="Điện thoại">
+                                Điện thoại
+                            </option>
+
+                            <option value="iPhone">
+                                iPhone
+                            </option>
+
+                            <option value="Android">
+                                Android
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRICE + STOCK -->
+                <div class="admin-form-row">
+
+                    <div class="admin-form-group">
+
+                        <label for="productPrice">
+                            Giá bán (VNĐ)
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            id="productPrice"
+                            min="0"
+                            placeholder="34990000"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="admin-form-group">
+
+                        <label for="productStock">
+                            Số lượng tồn kho
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            id="productStock"
+                            min="0"
+                            placeholder="10"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGE -->
+                <div class="admin-form-group">
+
+                    <label for="productImage">
+                        URL hình ảnh
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="url"
+                        id="productImage"
+                        placeholder="https://..."
+                        required
+                    >
+
+                    <small>
+                        Hiện tại nhập URL ảnh.
+                        Firebase Storage sẽ được tích hợp ở bước sau.
+                    </small>
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+                <div class="admin-form-group">
+
+                    <label for="productDescription">
+                        Mô tả sản phẩm
+                    </label>
+
+                    <textarea
+                        id="productDescription"
+                        rows="5"
+                        placeholder="Nhập thông tin mô tả sản phẩm..."
+                    ></textarea>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+                <div class="admin-form-actions">
+
+                    <button
+                        type="button"
+                        id="cancelModalBtn"
+                        class="admin-secondary-btn"
+                    >
+                        Hủy
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="admin-primary-btn"
+                    >
+                        💾 Lưu sản phẩm
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- DELETE MODAL -->
+    <div
+        id="deleteModal"
+        class="admin-modal"
+    >
+
+        <div class="admin-modal-overlay"></div>
+
+
+        <div class="admin-confirm-box">
+
+            <div class="admin-confirm-icon">
+                🗑️
+            </div>
+
+            <h2>
+                Xóa sản phẩm?
+            </h2>
+
+            <p id="deleteMessage">
+                Bạn có chắc chắn muốn xóa sản phẩm này?
+            </p>
+
+            <div class="admin-form-actions">
+
+                <button
+                    type="button"
+                    id="cancelDeleteBtn"
+                    class="admin-secondary-btn"
+                >
+                    Hủy
+                </button>
+
+                <button
+                    type="button"
+                    id="confirmDeleteBtn"
+                    class="admin-danger-btn"
+                >
+                    🗑️ Xóa sản phẩm
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script type="module" src="./products.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sản phẩm - HHHMOBILE STORE</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<link rel="stylesheet" href="chatbot.css">
+<script src="chatbot.js"></script>
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+
+        <div class="container header-container">
+
+            <a href="index.html" class="logo">
+                📱 HHHMOBILE STORE
+            </a>
+
+            <nav class="nav">
+
+                <a href="index.html">
+                    Trang chủ
+                </a>
+
+                <a href="products.html" class="active">
+                    Sản phẩm
+                </a>
+
+                <a href="orders.html">
+                    Đơn hàng
+                </a>
+
+            </nav>
+
+
+            <div class="header-actions">
+
+                <!-- GIỎ HÀNG -->
+                <a href="cart.html" class="cart-link">
+
+                    🛒 Giỏ hàng
+
+                    <span id="cartCount">
+                        0
+                    </span>
+
+                </a>
+
+
+                <!-- TÀI KHOẢN -->
+                <div id="userArea" class="user-area">
+
+                    <a href="login.html" class="login-btn">
+                        Đăng nhập
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= PRODUCTS PAGE ================= -->
+
+    <main>
+
+        <section class="products-page">
+
+            <div class="container">
+
+
+                <!-- PAGE TITLE -->
+
+                <div class="products-header">
+
+                    <div>
+
+                        <p class="hero-label">
+                            HHHMOBILE STORE
+                        </p>
+
+                        <h1>
+                            Điện thoại
+                        </h1>
+
+                        <p>
+                            Khám phá các sản phẩm điện thoại mới nhất.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= SEARCH & FILTER ================= -->
+
+                <div class="product-tools">
+
+
+                    <!-- SEARCH -->
+
+                    <div class="search-box">
+
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="🔎 Tìm kiếm điện thoại..."
+                        >
+
+                    </div>
+
+
+                    <!-- FILTER -->
+
+                    <div class="filter-box">
+
+                        <select id="brandFilter">
+
+                            <option value="all">
+                                Tất cả thương hiệu
+                            </option>
+
+                            <option value="Apple">
+                                Apple
+                            </option>
+
+                            <option value="Samsung">
+                                Samsung
+                            </option>
+
+                            <option value="Xiaomi">
+                                Xiaomi
+                            </option>
+
+                            <option value="OPPO">
+                                OPPO
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= PRODUCT LIST ================= -->
+
+                <div
+                    class="product-grid"
+                    id="productList"
+                >
+
+                    <!-- JavaScript tạo sản phẩm ở đây -->
+
+                </div>
+
+
+                <!-- ================= EMPTY MESSAGE ================= -->
+
+                <div
+                    class="empty-products"
+                    id="emptyProducts"
+                    style="display: none;"
+                >
+
+                    <div class="empty-icon">
+                        📱
+                    </div>
+
+                    <h3>
+                        Không tìm thấy sản phẩm
+                    </h3>
+
+                    <p>
+                        Hãy thử tìm kiếm với từ khóa khác.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="container footer-container">
+
+
+            <!-- STORE -->
+
+            <div class="footer-column">
+
+                <h3>
+                    📱 HHHMOBILE STORE
+                </h3>
+
+                <p>
+                    Hệ thống quản lý website bán điện thoại HHHMOBILE STORE.
+                </p>
+
+            </div>
+
+
+            <!-- LINKS -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Liên kết
+                </h3>
+
+                <a href="index.html">
+                    Trang chủ
+                </a>
+
+                <a href="products.html">
+                    Sản phẩm
+                </a>
+
+                <a href="cart.html">
+                    Giỏ hàng
+                </a>
+
+                <a href="login.html">
+                    Đăng nhập
+                </a>
+
+            </div>
+
+
+            <!-- SUPPORT -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Hỗ trợ
+                </h3>
+
+                <p>
+                    📞 0123 456 789
+                </p>
+
+                <p>
+                    ✉️ support@mobilestore.vn
+                </p>
+
+                <p>
+                    📍 Hải Phòng, Việt Nam
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 HHHMOBILE STORE. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <!-- Danh sách sản phẩm -->
+    <script type="module" src="js/products.js"></script>
+
+    <!-- Giỏ hàng -->
+    <script src="js/cart.js"></script>
+
+    <!-- Firebase -->
+    <script
+        type="module"
+        src="js/firebase.js">
+    </script>
+
+    <!-- Đăng nhập / đăng xuất -->
+    <script
+        type="module"
+        src="js/auth.js">
+    </script>
+
+
+</body>
+
+</html>

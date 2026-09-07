@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Đăng nhập - HHHMOBILE STORE</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<link rel="stylesheet" href="chatbot.css">
+<script src="chatbot.js"></script>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="container header-container">
+
+            <a href="index.html" class="logo">
+                📱 HHHMOBILE STORE
+            </a>
+
+            <nav class="nav">
+                <a href="index.html">Trang chủ</a>
+                <a href="products.html">Sản phẩm</a>
+                <a href="register.html">Đăng ký</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- LOGIN -->
+    <main class="auth-page">
+
+        <div class="auth-container">
+
+            <div class="auth-card">
+
+                <h1>Đăng nhập</h1>
+
+                <p class="auth-subtitle">
+                    Đăng nhập vào tài khoản HHHMOBILE STORE
+                </p>
+
+
+                <form id="loginForm">
+
+                    <div class="form-group">
+
+                        <label for="loginEmail">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            placeholder="Nhập email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="loginPassword">
+                            Mật khẩu
+                        </label>
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Nhập mật khẩu"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="auth-submit"
+                    >
+                        Đăng nhập
+                    </button>
+
+
+                    <p
+                        id="loginMessage"
+                        class="auth-message"
+                    ></p>
+
+                </form>
+
+
+                <div class="auth-footer">
+
+                    Chưa có tài khoản?
+
+                    <a href="register.html">
+                        Đăng ký ngay
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 HHHMOBILE STORE. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- FIREBASE AUTH -->
+    <script type="module" src="js/auth.js"></script>
+
+</body>
+
+</html>
