@@ -214,11 +214,10 @@
 
             } else {
 
-                messageElement.innerHTML = `
-                    <div class="message-content">
-                        ${message}
-                    </div>
-                `;
+                const messageContent = document.createElement("div");
+                messageContent.className = "message-content";
+                messageContent.textContent = message;
+                messageElement.appendChild(messageContent);
 
             }
 
