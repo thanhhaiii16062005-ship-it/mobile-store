@@ -1,257 +1,469 @@
-<!DOCTYPE html> <html lang="vi"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Đặt hàng - HHHMOBILE STORE</title>
 
-<link rel="stylesheet" href="css/style.css">
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Đặt hàng - HHHMOBILE STORE</title>
+
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="chatbot.css">
-</head> <body> <header class="header"> <div class="container header-container">
-<a href="index.html" class="logo">
-        📱 HHHMOBILE STORE
-    </a>
 
-    <nav class="nav">
-        <a href="index.html">Trang chủ</a>
-        <a href="products.html">Sản phẩm</a>
-        <a href="orders.html" class="active">Đặt hàng</a>
-        <a href="cart.html">Giỏ hàng</a>
-        <span id="authArea"></span>
-    </nav>
+    <style>
+        /* Thanh toán QR ngân hàng */
+        .bank-payment-box {
+            margin-top: 24px;
+            padding: 24px;
+            border: 1px solid #e1c77a;
+            border-radius: 16px;
+            background: #fffdf7;
+        }
 
-</div>
-</header> <main class="orders-page">
-<div class="container">
+        .bank-payment-box[hidden] {
+            display: none !important;
+        }
 
-    <div class="page-heading">
-        <p>CHECKOUT</p>
-        <h1>Thông tin đặt hàng</h1>
+        .bank-payment-box h3 {
+            margin-top: 0;
+        }
+
+        .bank-qr-layout {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        #bankQrImage {
+            display: block;
+            width: 260px;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            background: white;
+        }
+
+        .bank-info {
+            flex: 1;
+            min-width: 220px;
+            overflow-wrap: anywhere;
+        }
+
+        .bank-info p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        #bankPaymentContent {
+            color: #b42318;
+            overflow-wrap: anywhere;
+        }
+
+        .bank-payment-note {
+            margin-top: 20px;
+            color: #8a5b00;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .bank-qr-error {
+            color: #b42318;
+            font-size: 14px;
+        }
+
+        #orderMessage {
+            margin-top: 12px;
+            line-height: 1.6;
+        }
+
+        #orderSummary .order-summary-total {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #ddd;
+        }
+
+        #orderCode {
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 600px) {
+            .bank-payment-box {
+                padding: 16px;
+            }
+
+            .bank-qr-layout {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .bank-info {
+                min-width: 0;
+            }
+
+            #bankQrImage {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="container header-container">
+
+        <a href="index.html" class="logo">
+            📱 HHHMOBILE STORE
+        </a>
+
+        <nav class="nav">
+            <a href="index.html">Trang chủ</a>
+            <a href="products.html">Sản phẩm</a>
+            <a href="orders.html" class="active">Đặt hàng</a>
+            <a href="cart.html">Giỏ hàng</a>
+            <span id="authArea"></span>
+        </nav>
+
     </div>
+</header>
 
+<main class="orders-page">
+    <div class="container">
 
-    <div class="order-layout">
+        <div class="page-heading">
+            <p>CHECKOUT</p>
+            <h1>Thông tin đặt hàng</h1>
+        </div>
 
-        <!-- FORM ĐẶT HÀNG -->
-        <section class="order-form-card">
+        <div class="order-layout">
 
-            <h2>Thông tin nhận hàng</h2>
+            <!-- FORM ĐẶT HÀNG -->
+            <section class="order-form-card">
 
-            <form id="orderForm">
+                <h2>Thông tin nhận hàng</h2>
 
-                <div class="form-group">
-                    <label for="customerName">
-                        Họ và tên
-                    </label>
+                <form id="orderForm">
 
-                    <input
-                        type="text"
-                        id="customerName"
-                        placeholder="Nhập họ và tên"
-                        required
-                    >
-                </div>
+                    <div class="form-group">
+                        <label for="customerName">Họ và tên</label>
 
-
-                <div class="form-group">
-                    <label for="customerPhone">
-                        Số điện thoại
-                    </label>
-
-                    <input
-                        type="tel"
-                        id="customerPhone"
-                        placeholder="Nhập số điện thoại"
-                        required
-                    >
-                </div>
-
-
-                <div class="form-group">
-                    <label for="customerAddress">
-                        Địa chỉ nhận hàng
-                    </label>
-
-                    <textarea
-                        id="customerAddress"
-                        rows="4"
-                        placeholder="Nhập địa chỉ nhận hàng"
-                        required
-                    ></textarea>
-                </div>
-
-
-                <div class="form-group">
-                    <label for="orderNote">
-                        Ghi chú
-                    </label>
-
-                    <textarea
-                        id="orderNote"
-                        rows="3"
-                        placeholder="Ghi chú cho đơn hàng (không bắt buộc)"
-                    ></textarea>
-                </div>
-
-
-                <!-- THANH TOÁN -->
-                <div class="form-group payment-section">
-
-                    <label class="payment-title">
-                        💳 Phương thức thanh toán
-                    </label>
-
-
-                    <div class="payment-options">
-
-                        <label class="payment-card">
-
-                            <input
-                                type="radio"
-                                name="paymentMethod"
-                                value="COD"
-                                checked
-                            >
-
-                            <div class="payment-icon">
-                                💵
-                            </div>
-
-                            <div class="payment-content">
-                                <strong>
-                                    Thanh toán khi nhận hàng
-                                </strong>
-
-                                <span>
-                                    Thanh toán trực tiếp khi nhận được sản phẩm
-                                </span>
-                            </div>
-
-                            <div class="payment-check">
-                                ✓
-                            </div>
-
-                        </label>
-
-
-                        <label class="payment-card">
-
-                            <input
-                                type="radio"
-                                name="paymentMethod"
-                                value="BANK"
-                            >
-
-                            <div class="payment-icon">
-                                🏦
-                            </div>
-
-                            <div class="payment-content">
-                                <strong>
-                                    Chuyển khoản ngân hàng
-                                </strong>
-
-                                <span>
-                                    Chuyển khoản trước qua tài khoản ngân hàng
-                                </span>
-                            </div>
-
-                            <div class="payment-check">
-                                ✓
-                            </div>
-
-                        </label>
-
-
-                        <label class="payment-card">
-
-                            <input
-                                type="radio"
-                                name="paymentMethod"
-                                value="MOMO"
-                            >
-
-                            <div class="payment-icon">
-                                📱
-                            </div>
-
-                            <div class="payment-content">
-                                <strong>
-                                    Ví điện tử
-                                </strong>
-
-                                <span>
-                                    Thanh toán nhanh chóng qua ví điện tử
-                                </span>
-                            </div>
-
-                            <div class="payment-check">
-                                ✓
-                            </div>
-
-                        </label>
-
+                        <input
+                            type="text"
+                            id="customerName"
+                            placeholder="Nhập họ và tên"
+                            autocomplete="name"
+                            required
+                        >
                     </div>
 
+                    <div class="form-group">
+                        <label for="customerPhone">Số điện thoại</label>
+
+                        <input
+                            type="tel"
+                            id="customerPhone"
+                            placeholder="Nhập số điện thoại"
+                            autocomplete="tel"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customerAddress">
+                            Địa chỉ nhận hàng
+                        </label>
+
+                        <textarea
+                            id="customerAddress"
+                            rows="4"
+                            placeholder="Nhập địa chỉ nhận hàng"
+                            autocomplete="street-address"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="orderNote">Ghi chú</label>
+
+                        <textarea
+                            id="orderNote"
+                            rows="3"
+                            placeholder="Ghi chú cho đơn hàng (không bắt buộc)"
+                        ></textarea>
+                    </div>
+
+                    <!-- PHƯƠNG THỨC THANH TOÁN -->
+                    <div class="form-group payment-section">
+
+                        <label class="payment-title">
+                            💳 Phương thức thanh toán
+                        </label>
+
+                        <div class="payment-options">
+
+                            <label class="payment-card">
+                                <input
+                                    type="radio"
+                                    name="paymentMethod"
+                                    value="COD"
+                                    checked
+                                >
+
+                                <div class="payment-icon">💵</div>
+
+                                <div class="payment-content">
+                                    <strong>
+                                        Thanh toán khi nhận hàng
+                                    </strong>
+
+                                    <span>
+                                        Thanh toán trực tiếp khi nhận sản phẩm
+                                    </span>
+                                </div>
+
+                                <div class="payment-check">✓</div>
+                            </label>
+
+                            <label class="payment-card">
+                                <input
+                                    type="radio"
+                                    name="paymentMethod"
+                                    value="BANK"
+                                >
+
+                                <div class="payment-icon">🏦</div>
+
+                                <div class="payment-content">
+                                    <strong>
+                                        Chuyển khoản ngân hàng
+                                    </strong>
+
+                                    <span>
+                                        Quét mã QR để chuyển khoản
+                                    </span>
+                                </div>
+
+                                <div class="payment-check">✓</div>
+                            </label>
+
+                            <label class="payment-card">
+                                <input
+                                    type="radio"
+                                    name="paymentMethod"
+                                    value="MOMO"
+                                >
+
+                                <div class="payment-icon">📱</div>
+
+                                <div class="payment-content">
+                                    <strong>Ví điện tử</strong>
+
+                                    <span>
+                                        Phương thức ví điện tử
+                                    </span>
+                                </div>
+
+                                <div class="payment-check">✓</div>
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary order-submit-btn"
+                    >
+                        Đặt hàng
+                    </button>
+
+                    <div
+                        id="orderMessage"
+                        role="status"
+                        aria-live="polite"
+                    ></div>
+
+                </form>
+
+                <!-- QR NẰM NGOÀI FORM ĐỂ KHÔNG BỊ ẨN SAU KHI ĐẶT HÀNG -->
+                <div
+                    id="bankPaymentBox"
+                    class="bank-payment-box"
+                    hidden
+                >
+                    <h3>🏦 Thanh toán chuyển khoản</h3>
+
+                    <p>
+                        Mở ứng dụng ngân hàng và quét mã QR bên dưới.
+                    </p>
+
+                    <div class="bank-qr-layout">
+
+                        <div>
+                            <img
+                                id="bankQrImage"
+                                src=""
+                                alt="Mã QR chuyển khoản Techcombank"
+                            >
+
+                            <p
+                                id="bankQrError"
+                                class="bank-qr-error"
+                                hidden
+                            >
+                                Không tải được mã QR.
+                                Vui lòng kiểm tra kết nối Internet.
+                            </p>
+                        </div>
+
+                        <div class="bank-info">
+
+                            <p>
+                                Ngân hàng:
+                                <strong>Techcombank</strong>
+                            </p>
+
+                            <p>
+                                Chủ tài khoản:
+                                <strong>DAO THANH HAI</strong>
+                            </p>
+
+                            <p>
+                                Số tài khoản:
+                                <strong>19074893826011</strong>
+                            </p>
+
+                            <p>
+                                Số tiền cần chuyển:
+                                <strong id="bankPaymentAmount">0 ₫</strong>
+                            </p>
+
+                            <p>Nội dung chuyển khoản:</p>
+
+                            <strong id="bankPaymentContent"></strong>
+
+                            <p>
+                                <button
+                                    type="button"
+                                    id="copyTransferContent"
+                                    class="btn btn-primary"
+                                >
+                                    Sao chép nội dung
+                                </button>
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <p class="bank-payment-note">
+                        Vui lòng kiểm tra tên người nhận, số tiền và
+                        nội dung trước khi chuyển khoản. Đơn hàng chỉ
+                        được xác nhận đã thanh toán sau khi kiểm tra
+                        giao dịch thực tế.
+                    </p>
                 </div>
 
+            </section>
 
-                <button
-                    type="submit"
-                    class="btn btn-primary order-submit-btn"
-                >
-                    Đặt hàng
-                </button>
+            <!-- TÓM TẮT ĐƠN HÀNG -->
+            <aside class="order-summary-card">
 
-                <div id="orderMessage"></div>
+                <h2>Đơn hàng của bạn</h2>
 
-            </form>
+                <div id="orderSummary">
+                    <p>Đang tải đơn hàng...</p>
+                </div>
+
+            </aside>
+
+        </div>
+
+        <!-- THÔNG BÁO ĐẶT HÀNG THÀNH CÔNG -->
+        <section
+            id="orderSuccess"
+            class="order-success"
+            style="display:none;"
+        >
+
+            <div class="success-icon">✓</div>
+
+            <h2>Đặt hàng thành công!</h2>
+
+            <p>
+                Cảm ơn bạn đã mua hàng tại HHHMOBILE STORE.
+            </p>
+
+            <p>
+                Mã đơn hàng:
+                <strong id="orderCode"></strong>
+            </p>
+
+            <p>
+                <a href="index.html" class="btn btn-primary">
+                    Về trang chủ
+                </a>
+            </p>
 
         </section>
 
-
-        <!-- TÓM TẮT ĐƠN HÀNG -->
-        <aside class="order-summary-card">
-
-            <h2>Đơn hàng của bạn</h2>
-
-            <div id="orderSummary">
-                <p>Đang tải đơn hàng...</p>
-            </div>
-
-        </aside>
-
     </div>
+</main>
 
+<footer class="footer">
+    <div class="footer-bottom">
+        <p>© 2026 HHHMOBILE STORE. All rights reserved.</p>
+    </div>
+</footer>
 
-    <!-- ĐẶT HÀNG THÀNH CÔNG -->
-    <section
-        id="orderSuccess"
-        class="order-success"
-        style="display:none;"
-    >
+<script src="js/cart.js"></script>
+<script type="module" src="js/orders.js"></script>
+<script type="module" src="js/firebase.js"></script>
+<script type="module" src="js/auth.js"></script>
+<script src="chatbot.js"></script>
 
-        <div class="success-icon">
-            ✓
-        </div>
+<script>
+    // Sao chép nội dung chuyển khoản
+    document
+        .getElementById("copyTransferContent")
+        ?.addEventListener("click", async function () {
+            const content = document
+                .getElementById("bankPaymentContent")
+                ?.textContent
+                .trim();
 
-        <h2>Đặt hàng thành công!</h2>
+            if (!content) {
+                alert("Chưa có nội dung chuyển khoản.");
+                return;
+            }
 
-        <p>
-            Cảm ơn bạn đã mua hàng tại HHHMOBILE STORE.
-        </p>
+            try {
+                await navigator.clipboard.writeText(content);
+                alert("Đã sao chép nội dung chuyển khoản!");
+            } catch (error) {
+                alert("Không thể sao chép tự động. Vui lòng sao chép thủ công.");
+            }
+        });
 
-        <a
-            href="index.html"
-            class="btn btn-primary"
-        >
-            Về trang chủ
-        </a>
+    // Báo lỗi khi ảnh QR không tải được
+    document
+        .getElementById("bankQrImage")
+        ?.addEventListener("error", function () {
+            document.getElementById("bankQrError").hidden = false;
+        });
 
-    </section>
+    document
+        .getElementById("bankQrImage")
+        ?.addEventListener("load", function () {
+            document.getElementById("bankQrError").hidden = true;
+        });
+</script>
 
-</div>
-</main> <footer class="footer">
-<div class="footer-bottom">
-    <p>
-        © 2026 HHHMOBILE STORE. All rights reserved.
-    </p>
-</div>
-</footer> <script src="js/cart.js"></script> <script type="module" src="js/orders.js"></script> <script type="module" src="js/firebase.js"></script> <script type="module" src="js/auth.js"></script>     <script src="chatbot.js"></script>
-</body> </html>
+</body>
+</html>

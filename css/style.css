@@ -6404,3 +6404,106 @@ body {
     }
 
 }
+/* Tóm tắt đơn hàng */
+#orderSummary {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+#orderSummary .order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+#orderSummary .order-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#orderSummary .order-item strong {
+    overflow-wrap: anywhere;
+}
+
+#orderSummary .order-summary-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 14px;
+    border-top: 2px solid #ddd;
+}
+
+/* Khung thanh toán QR */
+.bank-payment-box {
+    margin-top: 24px;
+    padding: 24px;
+    border: 1px solid #e1c77a;
+    border-radius: 16px;
+    background: #fffdf7;
+}
+
+.bank-payment-box[hidden] {
+    display: none !important;
+}
+
+.bank-payment-box h3 {
+    margin-top: 0;
+    color: #222;
+}
+
+#bankQrImage {
+    display: block;
+    width: 280px;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.bank-info {
+    padding: 16px;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.bank-info p {
+    margin: 10px 0;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+#bankPaymentContent {
+    color: #b42318;
+    overflow-wrap: anywhere;
+}
+
+.bank-payment-note {
+    margin-bottom: 0;
+    color: #8a5b00;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+#orderMessage {
+    margin-top: 12px;
+    color: #b42318;
+    line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+    .bank-payment-box {
+        padding: 16px;
+    }
+
+    #bankQrImage {
+        width: 100%;
+        max-width: 280px;
+    }
+}
